@@ -8,8 +8,8 @@ public class Common {
         public static final String Key="LocationUpdateEnable";
 
         public static String getLocationData(Location location){
-            return location == null ? "Unknown Location" : new StringBuilder().append(location.getLatitude()).append("/").append(location.getLongitude())
-                    .append("/").append(location.getTime()).toString();
+            return location == null ? "Unknown Location" : new StringBuilder().append(location.getLatitude()).append(" ").append(location.getLongitude())
+                    .append(" ").append(location.getTime()).append(" ").append("Running").toString();
         }
 
         public static void setRequestUpdate(Context context, boolean b) {

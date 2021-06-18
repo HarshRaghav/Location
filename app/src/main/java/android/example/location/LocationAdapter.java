@@ -15,7 +15,6 @@ import java.util.List;
 
 public class LocationAdapter extends ListAdapter<Locate,LocationViewHolder> {
     private List<Locate> updateUI = new ArrayList<>();
-    private onClicked onClicked;
 
     static class LocationDiff extends DiffUtil.ItemCallback<Locate> {
         @Override
@@ -29,9 +28,8 @@ public class LocationAdapter extends ListAdapter<Locate,LocationViewHolder> {
         }
     }
 
-    protected LocationAdapter(@NonNull DiffUtil.ItemCallback<Locate> diffCallback,onClicked onclicked) {
+    protected LocationAdapter(@NonNull DiffUtil.ItemCallback<Locate> diffCallback) {
         super(diffCallback);
-        this.onClicked=onclicked;
     }
 
     @NonNull
@@ -49,7 +47,7 @@ public class LocationAdapter extends ListAdapter<Locate,LocationViewHolder> {
         holder.latitude.setText(arr[0]);
         holder.longitude.setText(arr[1]);
         holder.time.setText(arr[2]);
-        holder.state.setText(arr[3]);
+        holder.state.setText(arr[(arr.length-1)]);
     }
 
     public void update(List<Locate> N){
@@ -73,6 +71,4 @@ class LocationViewHolder extends RecyclerView.ViewHolder{
     TextView time = (TextView)itemView.findViewById(R.id.time);
     TextView state  = (TextView)itemView.findViewById(R.id.state);
 
-}
-interface onClicked{
 }

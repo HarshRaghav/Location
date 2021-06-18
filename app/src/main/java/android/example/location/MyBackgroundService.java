@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -69,7 +70,7 @@ public class MyBackgroundService extends Service {
         mChangeConfig=true;
     }
 
-    private void removeLocationUpdate() {
+    public void removeLocationUpdate() {
 
         try{
             fusedLocationProviderClient.removeLocationUpdates(locationCallback);
@@ -164,6 +165,7 @@ public class MyBackgroundService extends Service {
         Common.setRequestUpdate(this,true);
         startService(new Intent(getApplicationContext(),MyBackgroundService.class));
         try{
+            Log.v("Harsh","requestLoc");
             fusedLocationProviderClient.requestLocationUpdates(locationRequest,locationCallback, Looper.myLooper());
         }
         catch(SecurityException e){
